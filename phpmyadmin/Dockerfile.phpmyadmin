@@ -1,0 +1,9 @@
+# Utiliser l'image officielle de PHPMyAdmin comme base
+FROM --platform=linux/arm64 phpmyadmin/phpmyadmin
+
+# Définir les variables d'environnement pour PHPMyAdmin
+ENV PMA_HOST=sqlcontainer
+ENV MYSQL_ROOT_PASSWORD=root
+
+# Définir un volume pour la persistance des données
+VOLUME /var/lib/mysql

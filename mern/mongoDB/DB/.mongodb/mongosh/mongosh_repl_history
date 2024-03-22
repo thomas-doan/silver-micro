@@ -1,0 +1,30 @@
+db.tutorials.find()
+use doan
+db.tutorials.find()
+docker exec -it mongodb-container mongosh -u root -p root
+use doan
+db.tutorials.find()
+find()
+use doan
+show databases
+show database -u root -p root
+show --help
+show -help
+show user
+user root
+authentification root
+-help
+show databases
+show databse
+cd ..
+mongosh -help
+mongosh --help
+mongosh --username root
+mongosh --username root --password root
+mongosh -u root -p root
+mongosh show databases
+show dbs
+exit
+show dbss
+exit
+show dbs

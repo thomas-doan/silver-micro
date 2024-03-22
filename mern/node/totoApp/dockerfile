@@ -1,0 +1,23 @@
+# Etape 1: Image de base
+FROM node:14
+
+# Etape 2: Répertoire de travail
+WORKDIR /usr/src/app
+
+# Etape 3: Copier package.json
+COPY package*.json ./
+
+# Etape 4: Installer les dépendances
+RUN npm install
+
+# Etape 5: Copier le reste du code
+COPY . .
+
+# Etape 6: Exposer le port
+EXPOSE 7070
+
+# Etape 7: Commande pour démarrer l'application
+CMD [ "node", "server.js" ]
+
+# Etape 8: Définir le volume
+# VOLUME [ "/usr/src/app/totoApp" ]

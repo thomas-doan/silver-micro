@@ -1,0 +1,9 @@
+# Utiliser l'image officielle de MySQL comme base
+FROM mysql:8.0
+
+# Exposer le port 3306 pour permettre les connexions externes
+EXPOSE 3306
+
+# Définir les variables d'environnement pour MySQL
+ENV MYSQL_ROOT_PASSWORD=root
+ENV MYSQL_DATABASE=testdockerfile
