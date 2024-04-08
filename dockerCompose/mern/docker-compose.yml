@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: dockerComposerLamp
+    image: php:7.4-apache
+    ports:
+      - "80:80"
+    volumes:
+      - ./php/fizzbuzz.php:/var/www/html/fizzbuzz.php
+      - ./php/my-apache-config.conf:/etc/apache2/conf-available/my-apache-config.conf
+      - ./php:/var/www/html
+    command: >
+      bash -c "a2enconf my-apache-config
+      && apache2-foreground"
+    networks:
+      - network_docker_compose
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql2_docker_compose
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dockerComposeLamp
+    ports:
+      - "4546:3306"
+    volumes:
+      - ./mysql/database:/var/lib/mysql
+    networks:
+      - network_docker_compose
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: dockerComposerPhpMyAdmin
+    platform: linux/amd64
+    environment:
+      PMA_HOST: mysql2_docker_compose
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "9999:80"
+    networks:
+      - network_docker_compose
+
+networks:
+  network_docker_compose:
+    name: network_docker_compose
+    driver: bridge
